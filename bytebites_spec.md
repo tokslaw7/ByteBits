@@ -1,7 +1,5 @@
 
 ## Candidate Classes
-
-## Core Data Objects
 - User
 - MenuCatalog
 - MenuItem
