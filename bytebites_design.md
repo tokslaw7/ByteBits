@@ -4,16 +4,13 @@
 classDiagram
     class User {
         +String userId
-        +String name
-        +List~Order~ orderHistory
-        +placeOrder(items: List~MenuItem~): Order
-        +viewOrderHistory(): List~Order~
+        +String username
+        +List~Order~ purchaseHistory
     }
 
-    class Menu {
+    class MenuCatalog {
         +List~MenuItem~ items
         +filterByCategory(category: String): List~MenuItem~
-        +getAllItems(): List~MenuItem~
     }
 
     class MenuItem {
@@ -42,7 +39,7 @@ classDiagram
     }
 
     User "1" --> "0..*" Order : places
-    Menu "1" *-- "0..*" MenuItem : contains
+    MenuCatalog "1" *-- "0..*" MenuItem : contains
     Order "1" *-- "1..*" MenuItem : includes
     Order "1" --> "0..1" Transaction : paid by
 ```
