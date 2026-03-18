@@ -2,43 +2,47 @@
 ## Candidate Classes
 
 ## Core Data Objects
-- manage our customers
-- tracking their names 
-- past purchase history
-- customer orders
-- Menu 
+- User
+- MenuCatalog
+- MenuItem
+- Order
+- Transaction
 
 ### Manage Our Customers
-- username
-- order items
-- total price
-- receipt
-- TransactionID
+- UserId
+- Username
+- PurchaseHistory
 
-### Menu
-- Food
-- Drinks
-- Deserts
-- Breakfast order (order_type)
-- Lunch Order (order_type)
+### MenuCatalog
+- items
+- filterByCategory
 
-### Track Customers
-- username
-- total price
-- category by menu_order
-- popularity by order_type
-- TransactionID
+### MenuItem
+- itemId
+- name
+- price
+- category
+- popularityRating
 
-### Customer Orders
-- selected items
-- total price
+### Order
+- orderId
+- MenuItem
+- totalCost
+- status
 
-### Past Puchase history
-- transactionID 
+### Transaction
+- transactionId
+- amountPaid
+- paymentStatus
+- paymentMethod
+- transactionDate
+
+
+---
 
 ### Client Feature Request
 
-We need to build the backend logic for the ByteBites app. The system needs to manage our customers, tracking their names and their past purchase history so the system can verify they are real users.
+We need to build the backend logic for the ByteBites app. The system needs to ***manage our customers***, ***tracking their names*** and their ***past purchase history*** so the system can verify they are real users.
 
 These customers need to browse specific food items (like a "Spicy Burger" or "Large Soda"), so we must track the 
 - name, 
