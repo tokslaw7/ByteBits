@@ -46,6 +46,10 @@ class Order:
         self.totalCost: float = 0.0
         self.status: str = "pending"
 
+    def addItem(self, item: MenuItem) -> None:
+        self.selectedItems.append(item)
+        self.calculateTotal()
+
     def calculateTotal(self) -> float:
         self.totalCost = sum(item.price for item in self.selectedItems)
         return self.totalCost
