@@ -77,3 +77,6 @@ class User:
         self.userId = userId
         self.username = username
         self.purchaseHistory: list[Order] = []
+
+    def addOrder(self, order: Order) -> None:
+        self.purchaseHistory.append(order)
