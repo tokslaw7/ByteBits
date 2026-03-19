@@ -32,8 +32,11 @@ class MenuCatalog:
     def __init__(self):
         self.items: list[MenuItem] = []
 
+    def addItem(self, item: MenuItem) -> None:
+        self.items.append(item)
+
     def filterByCategory(self, category: str) -> list[MenuItem]:
-        return [item for item in self.items if item.category == category]
+        return [item for item in self.items if item.category.lower() == category.lower()]
 
 
 class Order:
