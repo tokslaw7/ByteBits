@@ -56,15 +56,16 @@ class Order:
 
 
 class Transaction:
-    def __init__(self, transactionId: str, amountPaid: float, paymentMethod: str):
+    def __init__(self, transactionId: str, amountPaid: float, paymentMethod: str, order: Order):
         self.transactionId = transactionId
         self.amountPaid = amountPaid
         self.paymentStatus: str = "unpaid"
         self.paymentMethod = paymentMethod
         self.transactionDate: date = date.today()
+        self.order = order
 
-    def processPayment(self, order: Order) -> bool:
-        if self.amountPaid >= order.totalCost:
+    def processPayment(self) -> bool:
+        if self.amountPaid >= self.order.totalCost:
             self.paymentStatus = "paid"
             return True
         self.paymentStatus = "failed"
