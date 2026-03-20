@@ -32,9 +32,11 @@ class MenuCatalog:
     def __init__(self):
         self.items: list[MenuItem] = []
 
+    # Adds a single MenuItem to the catalog's item list
     def addItem(self, item: MenuItem) -> None:
         self.items.append(item)
 
+    # Returns all items whose category matches the given string (case-insensitive)
     def filterByCategory(self, category: str) -> list[MenuItem]:
         return [item for item in self.items if item.category.lower() == category.lower()]
 
@@ -46,10 +48,12 @@ class Order:
         self.totalCost: float = 0.0
         self.status: str = "pending"
 
+    # Appends a MenuItem to the order and immediately recalculates the total cost
     def addItem(self, item: MenuItem) -> None:
         self.selectedItems.append(item)
         self.calculateTotal()
 
+    # Sums the price of all selected items and updates totalCost
     def calculateTotal(self) -> float:
         self.totalCost = sum(item.price for item in self.selectedItems)
         return self.totalCost
@@ -64,6 +68,7 @@ class Transaction:
         self.transactionDate: date = date.today()
         self.order = order
 
+    # Checks if amountPaid covers the order total; sets paymentStatus to "paid" or "failed"
     def processPayment(self) -> bool:
         if self.amountPaid >= self.order.totalCost:
             self.paymentStatus = "paid"
@@ -78,5 +83,6 @@ class User:
         self.username = username
         self.purchaseHistory: list[Order] = []
 
+    # Appends a completed Order to the user's purchaseHistory
     def addOrder(self, order: Order) -> None:
         self.purchaseHistory.append(order)
